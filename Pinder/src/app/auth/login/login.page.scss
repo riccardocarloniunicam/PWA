@@ -1,0 +1,50 @@
+*{
+    font-family: Helvetica, Arial, sans-serif;
+}
+.background{
+--background: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+}
+ion-card{
+    border-radius: 10px;
+    --ion-background-color: rgba(255, 255, 255, 0.6);
+}
+ion-item{
+    border-radius: 20px;
+}
+ion-card-header{
+    text-align: center;
+}
+.icon{
+  font-size: 80px;
+
+}
+.margin{
+    margin-top: 30%;
+}
+.divider{
+    display: flex;
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+}
+
+.line {
+    align-items: center;
+    margin: 1em -1em;
+    color: #838383;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+} 
+
+.one-line {
+    &:before,
+    &:after {
+       background: #838383;
+    }
+}

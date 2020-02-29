@@ -1,0 +1,25 @@
+<ion-content class="background">
+<div class="margin"></div>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item class="radius-item">
+      <ion-input type="email" placeholder="email"></ion-input>
+    </ion-item>
+    <div style="padding:5%"></div>
+    <ion-item class="radius-item">
+      <ion-input  type="password" placeholder="password"></ion-input>
+    </ion-item>
+    <ion-col>
+      <div style="padding:5%"></div>
+      <ion-button shape=round  expand="block" color="danger">Login</ion-button>
+      <span class="divider line one-line">or</span>
+      <ion-button [routerLink] = "['/register']"shape=round expand="block" color="primary">Register</ion-button>
+    </ion-col>
+  </ion-card-content>
+</ion-card>
+</ion-content>

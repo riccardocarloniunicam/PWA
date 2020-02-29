@@ -1,0 +1,8 @@
+{
+  "appId": "com.pinder.app",
+  "appName": "Pinder",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
