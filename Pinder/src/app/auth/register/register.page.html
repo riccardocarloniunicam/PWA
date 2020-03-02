@@ -6,22 +6,24 @@
     <ion-card-title ></ion-card-title>
   </ion-card-header>
   <ion-card-content>
+    <form>
     <div class="padding"></div>
     <ion-item class="rounded">
-      <ion-input type="text" placeholder="username"></ion-input>
+      <ion-input type="text" placeholder="username" name="username" [(ngModel)]="postData.username"></ion-input>
     </ion-item>
     <div class="padding"></div>
     <ion-item class="rounded">
-      <ion-input type="email" placeholder="email"></ion-input>
+      <ion-input type="email" placeholder="email" name="email" [(ngModel)]="postData.email"></ion-input>
     </ion-item>
     <div class="padding"></div>
     <ion-item class="rounded">
-      <ion-input type="password" placeholder="password"></ion-input>
+      <ion-input type="password" placeholder="password" name="password" [(ngModel)]="postData.password"></ion-input>
     </ion-item>
     <div class="padding"></div>
     <ion-col>
-      <ion-button shape="round" Expand="block" color="danger">Registrati</ion-button>
+      <ion-button (click)="signupAction()" shape="round" Expand="block" color="danger">Registrati</ion-button>
     </ion-col>
+    </form>
   </ion-card-content>
 </ion-card>
 </ion-content>
