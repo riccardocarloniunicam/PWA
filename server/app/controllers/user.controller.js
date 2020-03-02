@@ -23,8 +23,7 @@ exports.login = async function(req, res){
     }
     try{
         let user = await User.authenticate(username, password);
-        console.log(user);
-        return res.json({token: user.authtoken.token});
+        return res.json({token: user.authToken.token});
     }
     catch(err){
         return res.status(400).send('invalid username or password');

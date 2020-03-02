@@ -12,7 +12,7 @@ export class TinderUIComponent {
     title: string,
     description: string
   }>;
-  @ViewChildren('tinderCard') tinderCards: QueryList<ElementRef>;
+  @ViewChildren('tinderCard', {read: ElementRef}) tinderCards: QueryList<ElementRef>;
   tinderCardsArray: Array<ElementRef>;
 
   constructor(){}
@@ -21,10 +21,9 @@ export class TinderUIComponent {
     this.tinderCards.changes.subscribe(()=>{
       this.tinderCardsArray = this.tinderCards.toArray();
     })
-    console.log(this.tinderCards.first.nativeElement);
-    /*this.tinderCards.forEach(element => {
-      this.initGesture(element.el);
-    });*/
+    this.tinderCards.forEach(element => {
+      this.initGesture(element.nativeElement);
+    });
     //console.log(this.tinderCards.first.el);
   } 
   initGesture(element){
