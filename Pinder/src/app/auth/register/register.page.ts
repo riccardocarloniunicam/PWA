@@ -41,6 +41,7 @@ export class RegisterPage implements OnInit {
           (res: any) =>{
             let token = JSON.parse(res.data)["token"];
             if(token){
+              this.storageService.store("token", token);
               this.router.navigate(['home/']);
             }
             else{

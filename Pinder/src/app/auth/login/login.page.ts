@@ -36,6 +36,7 @@ export class LoginPage implements OnInit {
       from(this.authService.login(this.postData)).subscribe((res : any) =>{
         let token = JSON.parse(res.data)["token"];
         if(token){
+          this.storageService.store("token", token);
           this.router.navigate(['home/']);
         }
         else{
