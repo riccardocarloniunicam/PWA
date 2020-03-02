@@ -29,3 +29,7 @@ exports.login = async function(req, res){
         return res.status(400).send('invalid username or password');
     }
 }
+
+exports.user = async function(req, res){
+    
+}

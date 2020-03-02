@@ -16,14 +16,15 @@ module.exports = (sequelize, DataTypes) => {
 
   // generates a random 15 character token and
   // associates it with a user
-  AuthToken.generate = async function(UserId) {
-    if (!UserId) {
+  AuthToken.generate = async function(Userid) {
+    if (!Userid) {
       throw new Error('AuthToken requires a user ID')
     }
 
     let token = '';
     token = crypto.createHash('sha256').update((UserId + Math.random()).toString()).digest('hex');
-    const old = await AuthToken.findOne({where: {UserId} });
+    let token = jwt.sign(user, secret)
+    const old = await AuthToken.findOne({where: {Userid} });
     if(old){
       AuthToken.update({token},{
         where:{UserId},
