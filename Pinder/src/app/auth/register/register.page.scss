@@ -1,19 +1,17 @@
-*{
-    font-family: Helvetica, Arial, sans-serif;
-}
-.background{
---background: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+ion-content{
+    --ion-background-color: linear-gradient(90deg, rgba(255,154,158,1) 0%, rgba(254,207,239,1) 100%);
 }
 ion-card{
-    border-radius: 10px;
-    --ion-background-color: rgba(255, 255, 255, 0.6);
+    --ion-background-color: rgba(255, 255, 255, .8);
 }
-ion-item{
+.padding{
+    padding: 5%;
+}
+
+.rounded{
     border-radius: 20px;
 }
-ion-card-header{
-    text-align: center;
-}
-.margin{
-    margin-top: 30%;
+
+ion-button{
+    --ion-item-background:black;
 }

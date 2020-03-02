@@ -1,0 +1,13 @@
+#card-container{
+  position: relative;
+}
+ion-card{
+  position: absolute;
+  width: 95%;
+  border-radius: 10px;
+}
+ion-card-content{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 1px;
+}

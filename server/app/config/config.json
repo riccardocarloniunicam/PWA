@@ -1,0 +1,9 @@
+{
+    "developement": {
+      "username": "root",
+      "password": "pwaproject",
+      "database": "pwa",
+      "host": "localhost", 
+      "dialect": "mysql"
+    }
+  }
