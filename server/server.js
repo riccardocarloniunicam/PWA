@@ -14,12 +14,6 @@ app.use(bodyParser.json());
 routes(app);
 app.use(cors());
 db.sequelize.sync({ force: true }).then(() => {
-  Gender.create({
-    value: "male"
-  });
-  Gender.create({
-    value: "female"
-  });
   app.listen(PORT, () => {
     console.log(`App listening on PORT ${PORT}`);
   });

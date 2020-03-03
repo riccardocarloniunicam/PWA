@@ -17,8 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     User.hasMany(models.AuthToken);
-    User.belongsTo(models.Gender);
-    User.belongsTo(models.InterestIn);
     User.hasMany(models.Like);
   };
   User.authenticate = async function(username, password) {
