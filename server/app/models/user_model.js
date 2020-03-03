@@ -1,3 +1,5 @@
+
+const jwt  = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
       email: {
@@ -42,5 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       await user.addAuthToken(authToken);
       return { user, authToken };
     };
+    User.generateToken = async function(payload){
+    }
     return User;
   };

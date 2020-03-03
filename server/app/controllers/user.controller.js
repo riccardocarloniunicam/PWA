@@ -1,5 +1,4 @@
 const {User} = require('../models');
-
 exports.register = async function(req, res){
     try{
         //return res.json(req.body.username);

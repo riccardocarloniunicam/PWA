@@ -1,4 +1,4 @@
-
+const auth = require('../middleware/authMiddeware');
 module.exports = function(app){
     var login = require('../controllers/user.controller');
     app.route('/register')
@@ -6,6 +6,5 @@ module.exports = function(app){
     app.route('/login')
         .post(login.login);
     app.route('/user')
-        .get(login.user);
-
+        .post(auth, login.user);
 };

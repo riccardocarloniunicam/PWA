@@ -1,3 +1,53 @@
-ion-content{
-    --ion-background-color:  linear-gradient(90deg, rgba(235,237,238,1) 0%, rgba(253,251,251,1) 50%, rgba(235,237,238,1) 100%);
+.background-image{
+    --background: url(../../assets/img/back.jpg) 0 0/100% 100% no-repeat;
+}
+
+.img{
+    border-radius: 100%;
+    width: 130px;
+    
+}
+
+
+ion-card{
+    box-shadow: none;
+    display: block;
+    height: 50%;
+    margin-top:18%;
+
+    --background: rgba(0,0,0,0) ;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+
+}
+
+.label{
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    font-family: 'Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.cameraclass{
+    display: inline-block;
+}
+
+
+.c {
+    font-size: 2.5em;
+    align-content: center;
+    align-self: center;
+}
+
+.s {
+    font-size: 2.3em;
+
+}
+
+.slider{
+    margin-top: 100px;
+    font-family: 'Spartan', sans-serif;
 }
