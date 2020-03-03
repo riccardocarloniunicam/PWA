@@ -6,7 +6,7 @@ Tecnologie
 Per la creazione dell’applicazione ibrida abbiamo utilizzato ionic con angularjs. L’applicazione invierà le richieste restful ad un server NodeJS il quale utilizza expressJS per la gestione delle richieste. Il server è creato secondo il pattern MVC. Infine come database abbiamo utilizzato MySQL.
 
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/riccardocarloniunicam/PWA/blob/master/img.png)
 
 
 L’utente appena avviata l’applicazione si troverà davanti la schermata di login nella quale potrà effettuare il login se già registrato oppure andare alla pagina di registrazione. In quest’ultima pagina sarà richiesto all’utente di compilare un form con i seguenti dati:
