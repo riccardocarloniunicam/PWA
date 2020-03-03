@@ -1,4 +1,5 @@
 const {User} = require('../models');
+
 exports.register = async function(req, res){
     try{
         //return res.json(req.body.username);
@@ -10,7 +11,8 @@ exports.register = async function(req, res){
             }
         );
         let data = await user.authorize();
-        return res.json({token: data.authToken.token});
+     
+        return res.json( data );
     }
     catch(err){
         return res.status(400).send(err);
@@ -23,7 +25,7 @@ exports.login = async function(req, res){
     }
     try{
         let user = await User.authenticate(username, password);
-        return res.json({token: user.authToken.token});
+        return res.json( user );
     }
     catch(err){
         return res.status(400).send('invalid username or password');
@@ -31,5 +33,12 @@ exports.login = async function(req, res){
 }
 
 exports.user = async function(req, res){
-    
+    if(req.user){
+        res.send(req.user);
+    }
+    else{
+        res.status(404).send(
+            { errors: [{ message: 'missing auth token' }] }
+          );
+    }
 }

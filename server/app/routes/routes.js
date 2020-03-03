@@ -5,7 +5,7 @@ module.exports = function(app){
         .post(login.register);
     app.route('/login')
         .post(login.login);
-    app.route('/user/:userId')
+    app.route('/user')
         .get(login.user);
 
 };

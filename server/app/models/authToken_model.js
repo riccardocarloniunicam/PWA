@@ -10,21 +10,19 @@ module.exports = (sequelize, DataTypes) => {
 
   // set up the associations so we can make queries that include
   // the related objects
-  AuthToken.associate = function({ User }) {
+  AuthToken.associate = function ({ User }) {
     AuthToken.belongsTo(User);
   };
 
-  // generates a random 15 character token and
-  // associates it with a user
-  AuthToken.generate = async function(Userid) {
-    if (!Userid) {
-      throw new Error('AuthToken requires a user ID')
+  AuthToken.generate = async function (UserId) {
+  
+    if (!UserId) {
+      
+      throw new Error('AuthToken requires a user ID');
     }
-
     let token = '';
     token = crypto.createHash('sha256').update((UserId + Math.random()).toString()).digest('hex');
-    let token = jwt.sign(user, secret)
-    const old = await AuthToken.findOne({where: {Userid} });
+    const old = await AuthToken.findOne({where: {UserId} });
     if(old){
       AuthToken.update({token},{
         where:{UserId},
@@ -34,8 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     else{
       return await AuthToken.create({ token, UserId });
     }
-    
   }
-
   return AuthToken;
 };

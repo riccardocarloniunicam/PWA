@@ -46,15 +46,17 @@ export class TinderUIComponent {
 
         if(ev.deltaX > windowWidth/2){
           this.renderer.setStyle(element, 'transform', 'translateX( ' + windowWidth * 1.5 + 'px)');
+          this.cards.shift();
           //style.transform = `translateX(${windowWidth * 1.5}px)`;
           console.log(true);
         } else if (ev.deltaX < -windowWidth/2){
           this.renderer.setStyle(element, 'transform','translateX(' + (-windowWidth * 1.5) + 'px)' );
           //style.transform = `translateX(-${windowWidth * 1.5}px)`;
+          this.cards.shift();
           console.log(false);
         } else {
           this.renderer.setStyle(element, 'transform', '');
-          this.cards.shift();
+          
           //style.transform = ''
         }
       }
