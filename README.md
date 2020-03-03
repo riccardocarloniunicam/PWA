@@ -17,7 +17,4 @@ L’utente appena avviata l’applicazione si troverà davanti la schermata di l
 Sesso
 -interessi ( sesso al quale è interessato l’utente)
 Una volta effettuata la registrazione l’utente si troverà nella homepage dell’applicazione. La schermata principale mostra uno alla volta una serie di profili ai quali attraverso uno swipe potrà decidere se è
- 
-Davide Angelani 101612
-Riccardo Carloni 100952 2
 interessato o meno a tale persona ed in caso di un interesse reciproco, potrà decidere di avviare una chat. In basso nel footer l’utente potrà navigare tra le pagine dell’applicazione ovvero visualizzare il suo profilo e le chat.
