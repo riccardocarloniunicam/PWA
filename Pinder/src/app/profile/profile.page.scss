@@ -8,6 +8,10 @@
     
 }
 
+ion-item{
+    --background: rgba(0,0,0,0);
+}
+
 
 ion-card{
     box-shadow: none;
@@ -43,11 +47,22 @@ ion-card{
 }
 
 .s {
+    font-size: 2.3em; 
+}
+
+.m {
     font-size: 2.3em;
+    margin-left: 30px; 
 
 }
 
 .slider{
     margin-top: 100px;
     font-family: 'Spartan', sans-serif;
+}
+
+ion-slides{
+    
+    --bullet-background-active: rgba(230, 176, 0,1);
+    --bullet-background:rgba(0,0,0);
 }

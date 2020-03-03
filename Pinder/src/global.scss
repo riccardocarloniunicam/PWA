@@ -24,3 +24,9 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: -1px;
+    left: 0;
+  }
