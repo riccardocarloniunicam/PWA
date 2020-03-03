@@ -4,6 +4,11 @@ Introduzione
 Lo scopo del progetto è quello di creare un’applicazione nativa. La nostra idea è quella di sviluppare una app di incontri stile Tinder. L’utente quindi dopo aver effettuato la registrazione visualizzerà, una alla volta, il profilo degli utenti e attraverso uno swipe verso destra o sinistra l’utente potrà decidere o meno se è interessato a quella persona. Se l’interesse è reciproco i due utenti avranno accesso ad una chat. La visualizzazione di tali profili non è randomica ma vengono visualizzati profili di persone che vivono nella stessa nazione e che soddisfano i requisiti definiti dall’utente cioè il sesso.
 Tecnologie
 Per la creazione dell’applicazione ibrida abbiamo utilizzato ionic con angularjs. L’applicazione invierà le richieste restful ad un server NodeJS il quale utilizza expressJS per la gestione delle richieste. Il server è creato secondo il pattern MVC. Infine come database abbiamo utilizzato MySQL.
+
+
+![alt text](http://url/to/img.png)
+
+
 L’utente appena avviata l’applicazione si troverà davanti la schermata di login nella quale potrà effettuare il login se già registrato oppure andare alla pagina di registrazione. In quest’ultima pagina sarà richiesto all’utente di compilare un form con i seguenti dati:
 - Username
 - Password
