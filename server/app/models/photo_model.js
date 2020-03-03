@@ -1,12 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-    const Photo = sequelize.define('User', {
-      email: {
+    const Photo = sequelize.define('Photo', {
+      url: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
       }
     }, {});
     Photo.associate = function(models) {
+      Photo.belongsTo(models.UserData);
     };
     return Photo;
   };
