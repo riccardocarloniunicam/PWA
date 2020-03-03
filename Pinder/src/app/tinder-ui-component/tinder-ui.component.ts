@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { Gesture, GestureConfig, createGesture } from '@ionic/core';
 import { GestureController } from '@ionic/angular';
 @Component({
@@ -15,7 +15,7 @@ export class TinderUIComponent {
   @ViewChildren('tinderCard', {read: ElementRef}) tinderCards: QueryList<ElementRef>;
   tinderCardsArray: Array<ElementRef>;
 
-  constructor(){}
+  constructor(private renderer: Renderer2){}
   ngAfterViewInit() {
     this.tinderCardsArray = this.tinderCards.toArray();
     this.tinderCards.changes.subscribe(()=>{
@@ -34,23 +34,28 @@ export class TinderUIComponent {
       el: element,
       gestureName: 'tinder-swipe',
       onStart: () =>{
-        style.transition = "none";
+        this.renderer.setStyle(element, 'transition', 'none');
       },
       onMove: (ev) => {
-        style.transform = `translateX(${ev.deltaX}px) rotate(${ev.deltaX/20}deg)`;
+        this.renderer.setStyle(element, 'transform','translateX(' + ev.deltaX + 'px) rotate(' + ev.deltaX/20 + 'deg)');
+        //style.transform = `translateX(${ev.deltaX}px) rotate(${ev.deltaX/20}deg)`;
       },
       onEnd: (ev) => {
-
-        style.transition = "0.3s ease-out";
+        this.renderer.setStyle(element, 'transition','0.3s ease-out');
+        //style.transition = "0.3s ease-out";
 
         if(ev.deltaX > windowWidth/2){
-          style.transform = `translateX(${windowWidth * 1.5}px)`;
+          this.renderer.setStyle(element, 'transform', 'translateX( ' + windowWidth * 1.5 + 'px)');
+          //style.transform = `translateX(${windowWidth * 1.5}px)`;
           console.log(true);
         } else if (ev.deltaX < -windowWidth/2){
-          style.transform = `translateX(-${windowWidth * 1.5}px)`;
+          this.renderer.setStyle(element, 'transform','translateX(' + (-windowWidth * 1.5) + 'px)' );
+          //style.transform = `translateX(-${windowWidth * 1.5}px)`;
           console.log(false);
         } else {
-          style.transform = ''
+          this.renderer.setStyle(element, 'transform', '');
+          this.cards.shift();
+          //style.transform = ''
         }
       }
     }

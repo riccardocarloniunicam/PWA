@@ -4,22 +4,23 @@ import { LoginGuard } from './guards/login.guard';
 import {AuthGuard} from './guards/auth.guard';
 const routes: Routes = [
   { path: '', 
-    redirectTo: 'home',
-    canActivate: [LoginGuard],
+    redirectTo: 'tabs',
+    //canActivate: [LoginGuard],
     pathMatch: 'full' },
-
-  { path: 'home', 
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
     path: 'login',
-    canActivate: [LoginGuard],
+    //canActivate: [LoginGuard],
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'tabs',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  }
 ];
 
 @NgModule({
