@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     const authToken = await AuthToken.generate(this.id);
 
     await user.addAuthToken(authToken);
-    return { user, authToken };
+    return { authToken };
   };
   return User;
 };

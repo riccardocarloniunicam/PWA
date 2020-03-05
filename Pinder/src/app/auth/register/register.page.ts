@@ -25,7 +25,7 @@ export class RegisterPage implements OnInit {
     ],
     "password":[
       {type:'required',message:'Password is required'},
-      {type:'minlength',message:'Password must be longer or equal than 7 characters'},
+      {type:'minlength',message:'Password must be longer than 7 characters'},
       {type:'maxlength',message:'Password must be lower than 50 characters'}
     ],
     "retype_password":[
@@ -95,7 +95,9 @@ export class RegisterPage implements OnInit {
                 });
             }
             else{
-              console.log(res);
+              console.log(res.data);
+              this.storageService.store("token", res.data);
+              this.router.navigate(["/"]);
             }
           },
           (error: any) =>{

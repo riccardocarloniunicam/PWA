@@ -10,11 +10,10 @@ exports.register = async function(req, res){
         );
         let data = await user.authorize();
      
-        return res.json( data );
+        return res.json( data["authToken"].token );
     }
     catch(err){
-        console.log(err);
-        return res.status(400).send(err);
+        return res.status(400).send(err["errors"][0].message.split('.')[1].split(" ")[0] + " is already present in the database");
     }
 }
 exports.login = async function(req, res){
@@ -24,7 +23,7 @@ exports.login = async function(req, res){
     }
     try{
         let user = await User.authenticate(username, password);
-        return res.json( user );
+        return res.json( {"token":user["authToken"].token} );
     }
     catch(err){
         return res.status(400).send('invalid username or password');
