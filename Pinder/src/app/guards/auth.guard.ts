@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StorageService } from '../services/storage.service';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +9,7 @@ export class AuthGuard implements CanActivate {
   private loggedIn: boolean = false;
   constructor(
     private router: Router,
-    private storageService: StorageService,
+    private storageService: StorageService
   ){
     this.storageService.get("token")
       .then(res =>{

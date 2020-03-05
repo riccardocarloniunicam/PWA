@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { StorageService } from './../../services/storage.service';
 import { from } from 'rxjs'
-import { Toast } from '@ionic-native/toast/ngx';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { Toast } from '@ionic-native/toast/ngx';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -64,9 +63,12 @@ error_messages ={
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     };
-    from(this.authService.signup(postData)).subscribe(
+    from(this.authService.login(postData)).subscribe(
       (res: any) =>{
         if(res.status === 400){
+          this.toast.show(res.error,'3000','bottom').subscribe(toast =>{
+
+          });
         }
       },
       (error: any) =>{

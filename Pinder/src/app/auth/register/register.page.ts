@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { StorageService } from './../../services/storage.service';
 import { from } from 'rxjs'
-import { Toast } from '@ionic-native/toast/ngx';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Toast } from '@ionic-native/toast/ngx';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -89,9 +89,13 @@ export class RegisterPage implements OnInit {
         from(this.authService.signup(postData)).subscribe(
           (res: any) =>{
             if(res.status === 400){
-              if(res.status === 400){
-               
-              }  
+         
+                this.toast.show(res.error,'3000','bottom').subscribe(toast =>{
+      
+                });
+            }
+            else{
+              console.log(res);
             }
           },
           (error: any) =>{
