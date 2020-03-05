@@ -1,5 +1,13 @@
 const {User} = require('../models');
+const { validationResult } = require('express-validator/check');
 exports.register = async function(req, res){
+    if(req.username || req.password){
+        return res.status(400).send(errors.array()[0]);
+    }
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).send(errors.array()[0].msg);
+    }
     try{
         let user = await User.create(
             {
