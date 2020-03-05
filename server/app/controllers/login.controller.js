@@ -1,7 +1,6 @@
 const {User} = require('../models');
 exports.register = async function(req, res){
     try{
-        //return res.json(req.body.username);
         let user = await User.create(
             {
                 username: req.body.username,
@@ -14,6 +13,7 @@ exports.register = async function(req, res){
         return res.json( data );
     }
     catch(err){
+        console.log(err);
         return res.status(400).send(err);
     }
 }

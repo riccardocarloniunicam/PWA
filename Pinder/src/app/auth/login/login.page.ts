@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { StorageService } from './../../services/storage.service';
 import { from } from 'rxjs'
+import { Toast } from '@ionic-native/toast/ngx';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -37,7 +38,8 @@ error_messages ={
     public formBuilder : FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private toast: Toast
   ) { 
     this.loginForm = this.formBuilder.group({
       password: new FormControl('',Validators.compose([
@@ -65,7 +67,6 @@ error_messages ={
     from(this.authService.signup(postData)).subscribe(
       (res: any) =>{
         if(res.status === 400){
-
         }
       },
       (error: any) =>{

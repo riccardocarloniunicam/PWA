@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { StorageService } from './../../services/storage.service';
 import { from } from 'rxjs'
+import { Toast } from '@ionic-native/toast/ngx';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
@@ -35,7 +36,8 @@ export class RegisterPage implements OnInit {
     public formBuilder : FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private toast: Toast
   ) { 
     this.registerForm = this.formBuilder.group({
       username: new FormControl('',Validators.compose([
@@ -80,12 +82,16 @@ export class RegisterPage implements OnInit {
   }
     signupAction(){
         let postData = {
-
+          username: this.registerForm.value.username,
+          email: this.registerForm.value.email,
+          password: this.registerForm.value.password
         }
         from(this.authService.signup(postData)).subscribe(
           (res: any) =>{
             if(res.status === 400){
-          
+              if(res.status === 400){
+               
+              }  
             }
           },
           (error: any) =>{

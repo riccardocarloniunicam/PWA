@@ -40,3 +40,16 @@ ion-card{
        background: #969696;
     }
 }
+
+.error-messages{
+    margin-top:2%;
+    margin-left: 2%;
+}
+.error-messages ion-icon{
+    vertical-align: middle;
+    padding-right: 1%;
+}
+.error-messages span{
+    display: inline-block;
+    vertical-align: middle;
+}
