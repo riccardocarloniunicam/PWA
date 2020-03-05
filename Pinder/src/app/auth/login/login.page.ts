@@ -21,13 +21,12 @@ loginForm: FormGroup;
 error_messages ={
   "username":[
     {type:'required',message:'Username is required'},
-    {type:'minlenght',message:'Username must be longer or equal than 6 characters'},
-    {type:'maxlenght',message:'Username must be lower than 30 characters'}
+    {type:'maxlength',message:'Username must be lower than 30 characters'}
   ],
   "password":[
     {type:'required',message:'Password is required'},
-    {type:'minlenght',message:'Password must be longer or equal than 6 characters'},
-    {type:'maxlenght',message:'Password must be lower than 30 characters'}
+    {type:'minlength',message:'Password must be longer or equal than 6 characters'},
+    {type:'maxlength',message:'Password must be lower than 30 characters'}
   ],
 }
 
@@ -65,13 +64,8 @@ error_messages ={
     };
     from(this.authService.signup(postData)).subscribe(
       (res: any) =>{
-        let token = JSON.parse(res.data)["token"];
-        if(token){
-          this.storageService.store("token", token);
-          this.router.navigate(['home/']);
-        }
-        else{
-          console.log("username already exists");
+        if(res.status === 400){
+
         }
       },
       (error: any) =>{

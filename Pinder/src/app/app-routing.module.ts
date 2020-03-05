@@ -5,20 +5,21 @@ import {AuthGuard} from './guards/auth.guard';
 const routes: Routes = [
   { path: '', 
     redirectTo: 'tabs',
-    //canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
     pathMatch: 'full' },
   {
     path: 'login',
-    //canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
+    canActivate: [LoginGuard],
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'tabs',
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   }
 ];
