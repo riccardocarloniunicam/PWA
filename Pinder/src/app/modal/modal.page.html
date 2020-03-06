@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>
+        Scegli foto
+      </ion-title>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  <ion-content>
+  
+    <ion-item>
+      <ion-icon name="camera-outline"></ion-icon> <ion-label (click)="sendPictureToSomewhere()" >Fotocamera</ion-label>
+  
+    </ion-item>
+  
+  
+    <ion-item>
+  
+      <ion-icon  name="image-outline"></ion-icon> <ion-label (click)="sendFromGallery()">Galleria</ion-label>
+  
+    </ion-item>
+    
+  </ion-content>

@@ -8,13 +8,23 @@ import { environment } from './environment';
 export class HttpService {
 
   constructor(private http: HTTP) {}
-  async post(serviceName: string, data: any){
+  async post(serviceName: string, data: any, header:any){
     try{
       const url = environment.apiUrl + serviceName;
-      const headers = {};
+      const headers = header;
       const response = await this.http.post(url, data, headers);
       return response;
     } catch (error) {
+      return error;
+    }
+  }
+  async get(serviceName: string, data:any, header: any ){
+    try{
+      const url = environment.apiUrl + serviceName;
+      const headers = header;
+      const response = await this.http.get(url, data, headers);
+      return response;
+    } catch(error){
       return error;
     }
   }

@@ -1,5 +1,31 @@
-
+<ion-header>
+<ion-toolbar>
+    <ion-title size="large">Chats</ion-title>
+</ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content>
+
+   
+
+<ion-list>
+    <ion-item (click)="chat();" detail>
+        <ion-avatar slot="start">
+            <img src="https://placeimg.com/300/300/people">
+        </ion-avatar>
+        <ion-label>
+         <div class="flex_box">
+             <h3>Riccardo</h3>
+             <ion-note slot="end">12:53</ion-note>
+         </div>
+        
+         <p><ion-icon class="text-icon" color="primary" name="add"></ion-icon>Sono momentaneamente occupato a bestemmiare...</p>
+        </ion-label>
+    </ion-item>
+
+</ion-list>
 
 </ion-content>

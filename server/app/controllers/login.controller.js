@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, UserData} = require('../models');
 const { validationResult } = require('express-validator/check');
 exports.register = async function(req, res){
     if(req.username || req.password){
@@ -9,15 +9,17 @@ exports.register = async function(req, res){
         return res.status(400).send(errors.array()[0].msg);
     }
     try{
+        let userData = await UserData.create();
         let user = await User.create(
             {
                 username: req.body.username,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                UserDatumId: userData["dataValues"].id
             }
         );
         let data = await user.authorize();
-     
+ 
         return res.json( data["authToken"].token );
     }
     catch(err){
