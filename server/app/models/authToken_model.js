@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     }
-  }, {});
+  }, {
+    timestamps: false,
+  });
 
   // set up the associations so we can make queries that include
   // the related objects

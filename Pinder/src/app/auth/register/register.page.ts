@@ -96,7 +96,7 @@ export class RegisterPage implements OnInit {
             }
             else{
               console.log(res.data);
-              this.storageService.store("token", res.data);
+              this.storageService.store("Authorization", res.data);
               this.router.navigate(["/"]);
             }
           },

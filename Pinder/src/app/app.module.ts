@@ -10,6 +10,9 @@ import { Toast } from '@ionic-native/toast/ngx';
 import {HTTP} from '@ionic-native/http/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ModalPageModule } from './modal/modal.module';
+import { File } from '@ionic-native/file/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -17,7 +20,10 @@ import { ModalPageModule } from './modal/modal.module';
   providers: [
     StatusBar,
     Camera,
+    File,
+    FileTransfer,
     SplashScreen,
+    AuthService,
     Toast,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     HTTP

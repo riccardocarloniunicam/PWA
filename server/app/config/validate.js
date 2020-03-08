@@ -1,4 +1,4 @@
-const { body } = require('express-validator/check')
+const { body } = require('express-validator')
 
 module.exports = function(method){
     console.log("ciao");

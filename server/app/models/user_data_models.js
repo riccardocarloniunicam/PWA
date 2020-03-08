@@ -12,18 +12,25 @@ module.exports = (sequelize, DataTypes) => {
       bio:{
         type: DataTypes.TEXT
       }
-    }, {});
+    }, {
+      timestamps: false,
+    });
     UserData.associate = function(models) {
       UserData.hasOne(models.User);  
       UserData.hasMany(models.Photo);
       UserData.hasMany(models.Like);
     };
     UserData.updateInfo =  async function(body, id){
-      UserData.update({
+      var date = body.date;
+      console.log(date);
+      if(body.date){
+        date = new Date(body.date * 1000);
+      }
+      return UserData.update({
         bio: body.bio,
         gender: body.gender,
         interestIn: body.interestIn,
-        date: body.date
+        date: date
       }, {
           where: {id}
         } 

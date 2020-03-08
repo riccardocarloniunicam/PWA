@@ -7,10 +7,13 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  image = "https://placeimg.com/300/300/arch";
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
+  }
+  ionViewDidEnter(){
+    
   }
   async openModal(){
     let modal = await this.modalController.create({

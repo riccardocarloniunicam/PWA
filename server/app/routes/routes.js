@@ -1,6 +1,8 @@
 const auth = require('../middleware/authMiddeware');
-const { body } = require('express-validator/check')
+const { body } = require('express-validator/check');
+const upload = require('../middleware/uploadMiddleware');
 const validate = require('../config/validate');
+
 module.exports = function(app){
     var login = require('../controllers/login.controller');
     var user = require('../controllers/user.controller');
@@ -11,6 +13,8 @@ module.exports = function(app){
         app.route('/user')
         .get(auth, user.user)
         .post(auth, user.setUser);
-        app.route('/getUsers')
+    app.route('/photo')
+        .post(auth, upload.single('image'), user.photo);
+    app.route('/getUsers')
         .get(auth, user.getPhoto);
 };

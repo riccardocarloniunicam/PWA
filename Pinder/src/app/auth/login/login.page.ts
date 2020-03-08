@@ -65,10 +65,12 @@ error_messages ={
     };
     from(this.authService.login(postData)).subscribe(
       (res: any) =>{
+        console.log(res);
         if(res.status === 400){
           this.toast.show(res.error,'3000','bottom').subscribe(toast =>{
-
           });
+        }else{
+          this.storageService.store("Authorization", res.data);
         }
       },
       (error: any) =>{

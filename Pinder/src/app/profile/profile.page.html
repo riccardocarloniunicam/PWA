@@ -1,50 +1,21 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
   </head>
-  <ion-content class="background-image">
+  <ion-content >
   
   <ion-card>
     <ion-card-content>
-        <img style="-webkit-box-shadow: -1px 0px 15px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: -1px 0px 15px 0px rgba(0,0,0,0.75);
-        box-shadow: -1px 0px 15px 0px rgba(0,0,0,0.75);" class="img" src="https://placeimg.com/300/300/people" />
-      
-        <ion-item lines="none">
-          <ion-label  class="label">Riccardo,22</ion-label>
-        </ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-item  class ="settings" lines="none">
-                <ion-icon class="s" src="../../assets/icon/settings.svg"></ion-icon>  
-              </ion-item>
-            </ion-col>
-            <ion-col>
-            </ion-col>
-            <ion-col>
-            </ion-col>
-            <ion-col>
-            </ion-col>
-            <ion-col>
-            </ion-col>
-            <ion-col>
-            </ion-col>
-            <ion-col>
-              <ion-item  class ="settings" lines="none">
-                <ion-icon class="s" src="../../assets/icon/settings.svg"></ion-icon>  
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          </ion-grid>
-  
-  
-  
-  
-        <ion-item  (click)="openModal()" class ="cameraclass" lines="none">
-          <ion-icon class="c" src="../../assets/icon/photo.svg"></ion-icon>
-        </ion-item>
-  
-  
+      <ion-grid>
+        <ion-row><ion-col >
+          <ion-avatar class="avatar"><img  src={{image}}></ion-avatar>
+        </ion-col></ion-row>
+        <ion-row>
+          <ion-col><ion-icon tappable class="icon"  name="settings-outline"></ion-icon></ion-col>
+          <ion-col></ion-col>
+          <ion-col style="text-align: right;"><ion-icon tappable class="icon" name="settings-outline"></ion-icon></ion-col>
+        </ion-row>
+        <ion-row><ion-col style="text-align: center;"><ion-icon tappable class="camera" (click)="openModal()" name="camera-outline"></ion-icon></ion-col></ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
   

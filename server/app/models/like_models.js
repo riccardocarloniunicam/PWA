@@ -4,7 +4,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false
       }
-    }, {});
+    }, {
+      timestamps: false,
+    });
     Like.associate = function(models) {
         Like.belongsTo(models.UserData);
         Like.belongsTo(models.UserData,{as:"userLiked"});

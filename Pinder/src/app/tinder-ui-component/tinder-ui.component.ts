@@ -24,7 +24,6 @@ export class TinderUIComponent {
     this.tinderCards.forEach(element => {
       this.initGesture(element.nativeElement);
     });
-    //console.log(this.tinderCards.first.el);
   } 
   initGesture(element){
   

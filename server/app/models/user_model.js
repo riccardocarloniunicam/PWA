@@ -26,7 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     bio:{
       type: DataTypes.TEXT
     }
-  }, {});
+  }, {
+    timestamps: false,
+  });
   User.associate = function(models) {
     User.belongsTo(models.UserData);
     User.hasMany(models.AuthToken);
