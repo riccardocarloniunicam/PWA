@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { Gesture, GestureConfig, createGesture } from '@ionic/core';
 import { GestureController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -14,6 +15,7 @@ export class HomePage implements OnInit {
     this.cards = [];
    }
   ngOnInit() {
+
     this.cards = [
       {
         img: "https://placeimg.com/300/300/people",

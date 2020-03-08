@@ -31,28 +31,21 @@ export class ModalPage implements OnInit {
 async getPicture(type) {
   from(this.cameraService.getPicture(type)).subscribe(
     (res:any)=>{
-      this.storageService.get('token').then(token =>{
-        if(token){
-          from(this.userService.uploadPhoto(res, 'image', { 'Authorization': token})).subscribe((resU:any)=>{
-            if(resU.status === 400){
-              this.toast.show(resU.error,'3000','bottom').subscribe(toast =>{
-    
-              })
-            }
-            else{
-                this.toast.show('Successful upload of the photo','3000','bottom').subscribe(toast =>{
-                this.closeModal();
-              })
-            }
-          },
-          (errU:any) =>{
-            console.log(errU);
-          });
+      from(this.userService.uploadPhoto(res, 'image')).subscribe((resU:any)=>{
+        if(resU.status === 400){
+          this.toast.show(resU.error,'3000','bottom').subscribe(toast =>{
+
+          })
         }
         else{
-          
+            this.toast.show('Successful upload of the photo','3000','bottom').subscribe(toast =>{
+            this.closeModal();
+          })
         }
-      });
+      },
+      (err:any) =>{
+        console.log(err);
+      });;
       
     },
     (err:any)=>{

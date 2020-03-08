@@ -1,6 +1,6 @@
 import {HTTP} from '@ionic-native/http/ngx';
 import { Injectable } from '@angular/core';
-import { environment } from './environment';
+import { environment } from '../config/environment';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer/ngx';
 
 @Injectable({

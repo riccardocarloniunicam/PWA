@@ -5,6 +5,7 @@ import { StorageService } from './../../services/storage.service';
 import { from } from 'rxjs'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Toast } from '@ionic-native/toast/ngx';
+import { Constants } from '../../config/constants';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -70,7 +71,8 @@ error_messages ={
           this.toast.show(res.error,'3000','bottom').subscribe(toast =>{
           });
         }else{
-          this.storageService.store("Authorization", res.data);
+          this.storageService.store(Constants.TOKEN , res.data);
+          this.router.navigate(["tabs"]);
         }
       },
       (error: any) =>{

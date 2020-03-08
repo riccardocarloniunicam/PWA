@@ -5,6 +5,7 @@ import { StorageService } from './../../services/storage.service';
 import { from } from 'rxjs'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Toast } from '@ionic-native/toast/ngx';
+import { Constants } from '../../config/constants';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -96,8 +97,8 @@ export class RegisterPage implements OnInit {
             }
             else{
               console.log(res.data);
-              this.storageService.store("Authorization", res.data);
-              this.router.navigate(["/"]);
+              this.storageService.store(Constants.TOKEN, res.data);
+              this.router.navigate(["/tabs"]);
             }
           },
           (error: any) =>{
