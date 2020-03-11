@@ -6,6 +6,7 @@ import { from } from 'rxjs'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Toast } from '@ionic-native/toast/ngx';
 import { Constants } from '../../config/constants';
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -39,7 +40,8 @@ error_messages ={
     private router: Router,
     private authService: AuthService,
     private storageService: StorageService,
-    private toast: Toast
+    private toast: Toast,
+    private loaderComponent: LoaderComponent
   ) { 
     this.loginForm = this.formBuilder.group({
       password: new FormControl('',Validators.compose([
@@ -64,20 +66,15 @@ error_messages ={
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     };
-    from(this.authService.login(postData)).subscribe(
-      (res: any) =>{
-        console.log(res);
-        if(res.status === 400){
-          this.toast.show(res.error,'3000','bottom').subscribe(toast =>{
-          });
-        }else{
-          this.storageService.store(Constants.TOKEN , res.data);
-          this.router.navigate(["tabs"]);
-        }
-      },
-      (error: any) =>{
-        console.log("Network issue");
-      }
-    );
+    this.authService.login(postData)
+      .then( (res:any) => {
+            console.log(res);
+            this.storageService.store(Constants.TOKEN , res.data);
+            this.router.navigate(["tabs/home"]);
+      })
+      .catch( (err:any) => {
+        this.toast.show(err.error,'3000','bottom').subscribe(toast =>{
+        });
+      });
   }
 }

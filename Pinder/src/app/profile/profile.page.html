@@ -3,20 +3,13 @@
   </head>
   <ion-content >
   
-  <ion-card>
+  <ion-card (click)="openModal()">
     <ion-card-content>
-      <ion-grid>
-        <ion-row><ion-col >
-          <ion-avatar class="avatar"><img  src={{image}}></ion-avatar>
-        </ion-col></ion-row>
-        <ion-row>
-          <ion-col><ion-icon tappable class="icon"  name="settings-outline"></ion-icon></ion-col>
-          <ion-col></ion-col>
-          <ion-col style="text-align: right;"><ion-icon tappable class="icon" name="settings-outline"></ion-icon></ion-col>
-        </ion-row>
-        <ion-row><ion-col style="text-align: center;"><ion-icon tappable class="camera" (click)="openModal()" name="camera-outline"></ion-icon></ion-col></ion-row>
-      </ion-grid>
+      <ion-avatar  class="avatar"><img  src={{image}}></ion-avatar>
     </ion-card-content>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Nome, 22</ion-card-title>
+    </ion-card-header>
   </ion-card>
   
   <ion-slides class="slider" pager>

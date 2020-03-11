@@ -1,24 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-title>
-        Scegli foto
-      </ion-title>
-    </ion-toolbar>
-  
-  </ion-header>
-  
-  <ion-content>
-  
-    <ion-item>
-      <ion-icon name="camera-outline"></ion-icon> <ion-label class="label" (click)="getPicture('camera')" >Fotocamera</ion-label>
-  
-    </ion-item>
-  
-  
-    <ion-item>
-  
-      <ion-icon  name="image-outline"></ion-icon> <ion-label class="label" (click)="getPicture('gallery')">Galleria</ion-label>
-  
-    </ion-item>
+<ion-content>
+  <ion-card>
+    <div (click) ="presentPopover()" >
+      <ion-card-content>
+      <ion-img   src={{image}}></ion-img>
+      </ion-card-content>
+    </div>
     
-  </ion-content>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-input type="text" value={{name}}></ion-input>
+      </ion-card-title>
+      <ion-card-subtitle>
+        <ion-textarea type="text" maxlength=256 value={{bio}} rows=10 ></ion-textarea>
+      </ion-card-subtitle>
+    </ion-card-header>
+   
+  </ion-card>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-button  color="success">Conferma</ion-button> <ion-button color="danger">Annulla</ion-button>
+</ion-footer>

@@ -3,8 +3,9 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { StorageService } from '../services/storage.service';
 import { UserService } from '../services/user.service';
-import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Constants } from '../config/constants';
+import { resolve } from 'url';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,26 +14,29 @@ export class HomeGuard implements CanActivate {
     private storageService: StorageService,
     private userService: UserService,
     private router: Router
-  ){
+  ) {
 
   }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log("ciao");
-    return new Promise(resolve => {
-      this.storageService.get(Constants.TOKEN)
-      .then(token =>{
-        console.log(token);
-        if(token){
-          resolve(true);
-        }
-        else{
-          this.router.navigate(['login']);
-          resolve(false);
+    return new Promise<boolean>(resolve => {
+      this.storageService.get(Constants.TOKEN).then((token: any) => {
+        if (token) {
+          this.userService.getUser(token)
+            .then((res: any) => {
+              
+              resolve(true);
+            })
+            .catch((err: any) => {
+              
+              this.router.navigate(['login']);
+              resolve(false);
+            });
         }
       })
       .catch(err =>{
+        this.router.navigate(['login']);
         resolve(false);
       })
     });

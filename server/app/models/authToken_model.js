@@ -26,13 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     token = crypto.createHash('sha256').update((UserId + Math.random()).toString()).digest('hex');
     const old = await AuthToken.findOne({where: {UserId} });
     if(old){
-      AuthToken.update({token},{
+      await AuthToken.update({token},{
         where:{UserId},
       });
-      return await AuthToken.findOne({where: {UserId} });
+      return await AuthToken.findOne({where: {UserId} });;
+      ;
     }
     else{
       return await AuthToken.create({ token, UserId });
+    
     }
   }
   return AuthToken;

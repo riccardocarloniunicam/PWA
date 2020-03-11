@@ -6,7 +6,13 @@ import { ChatPage } from './chat.page';
 const routes: Routes = [
   {
     path: '',
-    component: ChatPage
+    component: ChatPage,
+    children: [
+      {
+        path: 'conversation',
+        loadChildren: () => import('../conversation/conversation.module').then( m => m.ConversationPageModule)
+      }
+    ]
   }
 ];
 

@@ -13,7 +13,7 @@ export class AuthService {
     private storageService: StorageService,
     private router: Router
   ) { }
-  async login(postData: any){
+  async login(postData: any) {
       return await this.httpService.post('login', postData, {});
     }
     

@@ -13,18 +13,6 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    date: {
-      type: DataTypes.DATEONLY
-    },
-    gender:{
-      type: DataTypes.STRING
-    },
-    interestIn:{
-      type: DataTypes.STRING
-    },
-    bio:{
-      type: DataTypes.TEXT
     }
   }, {
     timestamps: false,
@@ -37,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
   User.authenticate = async function(username, password) {
 
     const user = await User.findOne({ where: { username } });
-
-    if (password == user.password) {
+    if (password === user.password) {
+      console.log(user);
       return user.authorize();
     }
     throw new Error('invalid password');

@@ -5,6 +5,8 @@ import {from} from 'rxjs';
 import { StorageService } from '../services/storage.service';
 import { CameraService } from '../services/camera.service';
 import { UserService } from '../services/user.service';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../components/popover/popover.component';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.page.html',
@@ -12,7 +14,11 @@ import { UserService } from '../services/user.service';
 })
 export class ModalPage implements OnInit {
 
-  //passedId = null;
+  image = "https://placeimg.com/300/300/arch";
+  name = "Davide";
+  bio = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...";
+  isEditableName: boolean = false;
+  isEditableBio: boolean = false;
   constructor(
     private navParam: NavParams,
     private modalControl: ModalController,
@@ -20,38 +26,21 @@ export class ModalPage implements OnInit {
     private userService: UserService,
     private toast: Toast,
     private storageService: StorageService,
+    private popoverController: PopoverController
     ) { }
-
   ngOnInit() {
     //this.passedId= this.navParam.get('custom_id');
   }
 
-
-
-async getPicture(type) {
-  from(this.cameraService.getPicture(type)).subscribe(
-    (res:any)=>{
-      from(this.userService.uploadPhoto(res, 'image')).subscribe((resU:any)=>{
-        if(resU.status === 400){
-          this.toast.show(resU.error,'3000','bottom').subscribe(toast =>{
-
-          })
-        }
-        else{
-            this.toast.show('Successful upload of the photo','3000','bottom').subscribe(toast =>{
-            this.closeModal();
-          })
-        }
-      },
-      (err:any) =>{
-        console.log(err);
-      });;
-      
-    },
-    (err:any)=>{
-      console.log(err);
-    });
+async presentPopover()
+{
+  const popover = await this.popoverController.create({
+    component: PopoverComponent,
+    translucent: true,
+  });
+  return await popover.present();
 }
+
 
 
 

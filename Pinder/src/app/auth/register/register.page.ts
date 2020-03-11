@@ -87,22 +87,14 @@ export class RegisterPage implements OnInit {
           email: this.registerForm.value.email,
           password: this.registerForm.value.password
         }
-        from(this.authService.signup(postData)).subscribe(
+        this.authService.signup(postData).then(
           (res: any) =>{
-            if(res.status === 400){
-         
-                this.toast.show(res.error,'3000','bottom').subscribe(toast =>{
-      
-                });
-            }
-            else{
-              console.log(res.data);
               this.storageService.store(Constants.TOKEN, res.data);
-              this.router.navigate(["/tabs"]);
-            }
-          },
-          (error: any) =>{
-            console.log("Network issue");
+              this.router.navigate(["/tabs/home"]);
+          }).catch( (err: any) =>{
+            this.toast.show(err.error,'3000','bottom').subscribe(toast =>{
+      
+            });
           }
         );
     

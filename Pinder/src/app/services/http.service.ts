@@ -12,27 +12,15 @@ export class HttpService {
     private http: HTTP,
     private fileTransfer: FileTransfer
     ) {}
-  async post(serviceName: string, data: any, header:any){
-    try{
-      const url = environment.apiUrl + serviceName;
-      const headers = header;
-      const response = await this.http.post(url, data, headers);
-      return response;
-    } catch (error) {
-      return error;
-    }
+  post(serviceName: string, data: any, header:any){
+    const url = environment.apiUrl + serviceName;
+    const headers = header;
+    return this.http.post(url, data, headers);
   }
-  async get(serviceName: string, data:any, header: any ){
-    try{
-      const url = environment.apiUrl + serviceName;
-      const headers = header;
-      const response = await this.http.get(url, data, headers);
-      console.log(response);
-      return response;
-    } catch(error){
-      console.log(error);
-      return error;
-    }
+  get(serviceName: string, data:any, header: any ){
+    const url = environment.apiUrl + serviceName;
+    const headers = header;
+    return this.http.get(url, data, headers);
   }
   async postFile(serviceName: string, fileKey: string, data:any, header:any){
     

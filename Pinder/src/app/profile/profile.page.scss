@@ -1,15 +1,23 @@
 ion-content{
     --ion-background-color:  linear-gradient(90deg, rgba(235,237,238,1) 0%, rgba(253,251,251,1) 50%, rgba(235,237,238,1) 100%);
 }
+
 ion-card{
     margin: 0;
-    padding: 15% 2% 5% 2%;
+    padding: 15% 5% 15% 5%;
     --ion-background-color: rgba(255, 255, 255, .7);
     border-bottom-left-radius: 32%;
     border-bottom-right-radius: 32%;
 }
+ion-card-content{
+    margin-bottom: 2%;
+}
+ion-card-title{
+    font-size: 24px;
+}
+
 .avatar{
-    width: 120px;
+    width: 150px;
     height: auto;
     margin: 0 auto;
 }
@@ -32,3 +40,4 @@ ion-slides{
     --bullet-background-active: rgba(230, 176, 0,1);
     --bullet-background:rgba(0,0,0);
 }
+

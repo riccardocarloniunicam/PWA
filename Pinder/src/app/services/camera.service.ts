@@ -28,7 +28,7 @@ export class CameraService {
   private getDestinationType(type){
     switch(type){
       case 'camera': return this.camera.PictureSourceType.CAMERA;
-      case 'gallery': return this.camera.PictureSourceType.PHOTOLIBRARY;
+      case 'gallery': return this.camera.PictureSourceType.SAVEDPHOTOALBUM;
     }
   }
 }

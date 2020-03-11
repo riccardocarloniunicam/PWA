@@ -1,3 +1,3 @@
 export class Constants {
-    public static readonly TOKEN = 'authorization';
+    public static readonly TOKEN = 'Authorization';
 }
