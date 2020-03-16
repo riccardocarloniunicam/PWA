@@ -2,16 +2,13 @@
   <ion-card>
     <div (click) ="presentPopover()" >
       <ion-card-content>
-      <ion-img   src={{image}}></ion-img>
+      <ion-img   src={{info.image}}></ion-img>
       </ion-card-content>
     </div>
     
     <ion-card-header>
-      <ion-card-title>
-        <ion-input type="text" value={{name}}></ion-input>
-      </ion-card-title>
       <ion-card-subtitle>
-        <ion-textarea type="text" maxlength=256 value={{bio}} rows=10 ></ion-textarea>
+        <ion-textarea [(ngModel)]="info.bio" type="text" maxlength=256 value={{info.bio}} placeholder="Insert your bio" rows=10 ></ion-textarea>
       </ion-card-subtitle>
     </ion-card-header>
    
@@ -20,5 +17,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button  color="success">Conferma</ion-button> <ion-button color="danger">Annulla</ion-button>
+  <ion-button  (click)="send()" color="success">Conferma</ion-button> <ion-button (click)="closeModal()" color="danger">Annulla</ion-button>
 </ion-footer>

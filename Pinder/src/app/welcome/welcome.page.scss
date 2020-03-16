@@ -1,0 +1,21 @@
+
+ion-content{
+    --ion-background-color:  linear-gradient(135deg, rgba(188,78,156,1) 0%, rgba(248,7,89,1) 100%);
+}
+ion-card-title{
+    padding: 5% 0;
+    font-size: 48px;
+}
+.padding{
+    padding-bottom: 5%;
+}
+ion-item:first-child{
+    --ion-background-color: #fff;
+    border-radius: 20px;
+}
+ion-item{
+    --ion-background-color: transparent;
+}
+ion-card{
+    --ion-background-color: rgba(255, 255, 255, .8);
+}

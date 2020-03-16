@@ -5,11 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       allowNull: false
     },
-    username: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false
@@ -22,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.AuthToken);
 
   };
-  User.authenticate = async function(username, password) {
+  User.authenticate = async function(email, password) {
 
-    const user = await User.findOne({ where: { username } });
+    const user = await User.findOne({ where: { email } });
     if (password === user.password) {
       console.log(user);
       return user.authorize();

@@ -13,6 +13,7 @@ import { ModalPageModule } from './modal/modal.module';
 import { File } from '@ionic-native/file/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { AuthService } from './services/auth.service';
+import { DatePicker } from '@ionic-native/date-picker/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -21,6 +22,7 @@ import { AuthService } from './services/auth.service';
     StatusBar,
     Camera,
     File,
+    DatePicker,
     FileTransfer,
     SplashScreen,
     AuthService,

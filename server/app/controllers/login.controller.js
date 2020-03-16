@@ -1,7 +1,7 @@
-const {User, UserData} = require('../models');
+const {User, UserData, Photo } = require('../models');
 const { validationResult } = require('express-validator/check');
 exports.register = async function(req, res){
-    if(req.username || req.password){
+    if(req.email || req.password){
         return res.status(400).send(errors.array()[0]);
     }
     const errors = validationResult(req);
@@ -12,12 +12,12 @@ exports.register = async function(req, res){
         let userData = await UserData.create();
         let user = await User.create(
             {
-                username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
                 UserDatumId: userData["dataValues"].id
             }
         );
+        let photo = await Photo.create({ UserDatumId: userData["dataValues"].id });
         let data = await user.authorize();
         return res.send( data["authToken"].token );
     }
@@ -28,14 +28,15 @@ exports.register = async function(req, res){
     }
 }
 exports.login = async function(req, res){
+    console.log(req.body);
     const {username, password} = req.body;
     if(!username || !password){
         return res.status(400).send('missing username or password');
     }
     try{
         let user = await User.authenticate(username, password);
-        console.log(user);
-        console.log(user["authToken"].token);
+        //console.log(user);
+        //console.log(user["authToken"].token);
         return res.send( user["authToken"].token );
     }
     catch(err){

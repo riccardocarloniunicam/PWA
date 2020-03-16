@@ -24,6 +24,9 @@ export class UserService {
   async getUser(token){
       return await this.httpService.get('user',{} , {"Authorization": token});
   }
+  async setUser(postData: any, token){
+    return await this.httpService.post('user',postData, {"Authorization": token});
+  }
   async uploadPhoto(postData: any, key:any, token){
       return await this.httpService.postFile('photo', key, postData, {"Authorization": token});
   }

@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { StorageService } from '../services/storage.service';
 import { UserService } from '../services/user.service';
+import { StorageService } from '../services/storage.service';
 import { Constants } from '../config/constants';
-import { resolve } from 'url';
+
 @Injectable({
   providedIn: 'root'
 })
-export class IndexGuard implements CanActivate {
+export class InfoGuard implements CanActivate {
   constructor(
-    private storageService: StorageService,
-    private userService: UserService,
-    private router: Router
-  ){ }
+              private router: Router, 
+              private userService:UserService,
+              private storageService: StorageService
+              ){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -22,18 +22,28 @@ export class IndexGuard implements CanActivate {
           if (token) {
             this.userService.getUser(token)
               .then((res: any) => {
-                console.log(JSON.parse(res));
-                this.router.navigate(['welcome']);
-                resolve(false);
+                let data = JSON.parse(res.data);
+                console.log(data["user"]);
+                if(!data["user"].name || !data["user"].name || !data["user"].date || !data["user"].gender || !data["user"].interestIn){
+                  resolve(true);
+                }
+                else{
+                  this.router.navigate(['tabs']);
+                  resolve(false);
+                }
               })
               .catch((err: any) => {
-                resolve(true);
+                
+                this.router.navigate(['login']);
+                resolve(false);
               });
           }
         })
         .catch(err =>{
-          resolve(true);
+          this.router.navigate(['login']);
+          resolve(false);
         })
       });
   }
+  
 }

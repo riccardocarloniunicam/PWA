@@ -1,19 +1,26 @@
 const { User, UserData, Photo } = require('../models');
 const { validationResult } = require('express-validator');
-const resize = require('../config/resize');
+const resize = require('../services/resize');
 exports.user = async function(req, res){
     if(req.user){
-        res.send(req.user["UserDatum"]);
+        const user = req.user["UserDatum"];
+        console.log(req.user["UserDatum"].id);
+        const photo = await Photo.getPhoto(user.id);
+        let json = {
+            user,
+            photo
+        }
+        res.json( json );
     }
     else{
-        res.status(404).send('invalid auth token');
+        res.status(400).send('invalid auth token');
     }
 }
 exports.setUser = async function(req, res){
     if(!req.user){
-        res.status(404).send('invalid auth token');
+        res.status(400).send('invalid auth token');
     }
-    if(!req.body.bio && !req.body.date && !req.body.gender && !req.body.interstIn){
+    if(!req.body.bio && !req.body.date && !req.body.gender && !req.body.interest){
         res.status(400).send('Missing data');
     }
     if(req.user["dataValues"].UserDatumId){
@@ -35,14 +42,23 @@ exports.photo = async function(req, res){
     }
     catch(err){
         console.log(err);
-        return(err);
-    }
-    
-   
-    
+        res.status(400).send(err);
+    }   
 }
-exports.getPhoto = async function(req, res){
-    let data = await User.findRandom();
-    console.log(data);
-    res.json( data );
+exports.getUsers = async function(req, res){
+    if(!req.user){
+        res.status(400).send('Invalid token');
+    }
+    try{
+        //console.log(req.user["UserDatum"].dataValues);
+        const data = await UserData.findRandom(req.user["UserDatum"].dataValues);
+        //console.log(data);
+        //res.send(req.user);
+        res.send( data );
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).send(err);
+    }
+  
 }

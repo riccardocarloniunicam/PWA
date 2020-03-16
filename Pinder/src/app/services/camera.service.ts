@@ -11,11 +11,12 @@ export class CameraService {
   ) { }
   async getPicture(type){
     const options: CameraOptions = {
-      quality: 30,
+      quality: 75,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.getDestinationType(type)
+      sourceType: this.getDestinationType(type),
+      correctOrientation: true
     }
   
     return await this.camera.getPicture(options)

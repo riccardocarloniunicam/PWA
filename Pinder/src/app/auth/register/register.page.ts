@@ -15,11 +15,6 @@ export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
   error_messages ={
-    "username":[
-      {type:'required',message:'Username is required'},
-     
-      {type:'maxlength',message:'Username must be lower than 50 characters'}
-    ],
     "email":[
       {type:'required',message:'Email is required'},
       {type:'pattern',message:'Email must be valid'}
@@ -41,10 +36,6 @@ export class RegisterPage implements OnInit {
     private toast: Toast
   ) { 
     this.registerForm = this.formBuilder.group({
-      username: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.maxLength(50)
-      ])),
       email: new FormControl('',Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -83,14 +74,14 @@ export class RegisterPage implements OnInit {
   }
     signupAction(){
         let postData = {
-          username: this.registerForm.value.username,
           email: this.registerForm.value.email,
           password: this.registerForm.value.password
         }
         this.authService.signup(postData).then(
           (res: any) =>{
               this.storageService.store(Constants.TOKEN, res.data);
-              this.router.navigate(["/tabs/home"]);
+              console.log(res);
+              this.router.navigate(["welcome"]);
           }).catch( (err: any) =>{
             this.toast.show(err.error,'3000','bottom').subscribe(toast =>{
       

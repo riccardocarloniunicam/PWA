@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeGuard } from './guards/home.guard';
 import { IndexGuard } from './guards/index.guard';
+import { InfoGuard } from './guards/info.guard';
 const routes: Routes = [
   { path: '', 
-    redirectTo: 'tabs',
-    canActivate: [HomeGuard],
+    redirectTo: 'welcome',
+    canActivate: [InfoGuard],
     pathMatch: 'full' 
   },
   {
@@ -22,7 +23,14 @@ const routes: Routes = [
     path: 'tabs',
     canActivate: [HomeGuard],
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'welcome',
+    canActivate: [InfoGuard],
+    loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
   }
+
+
 ];
 
 @NgModule({

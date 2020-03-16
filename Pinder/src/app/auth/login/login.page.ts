@@ -6,7 +6,7 @@ import { from } from 'rxjs'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Toast } from '@ionic-native/toast/ngx';
 import { Constants } from '../../config/constants';
-import { LoaderComponent } from 'src/app/components/loader/loader.component';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -41,7 +41,7 @@ error_messages ={
     private authService: AuthService,
     private storageService: StorageService,
     private toast: Toast,
-    private loaderComponent: LoaderComponent
+    private loadingCtrl: LoadingController
   ) { 
     this.loginForm = this.formBuilder.group({
       password: new FormControl('',Validators.compose([
@@ -66,15 +66,23 @@ error_messages ={
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     };
-    this.authService.login(postData)
+    this.loadingCtrl.create({}).then(
+      loading => {
+        loading.present();
+        this.authService.login(postData)
       .then( (res:any) => {
+            loading.dismiss();
             console.log(res);
             this.storageService.store(Constants.TOKEN , res.data);
-            this.router.navigate(["tabs/home"]);
+            this.router.navigate(["welcome"]);
       })
       .catch( (err:any) => {
+        loading.dismiss();
         this.toast.show(err.error,'3000','bottom').subscribe(toast =>{
         });
       });
+      }
+    );
+    
   }
 }

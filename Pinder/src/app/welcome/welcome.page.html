@@ -1,0 +1,40 @@
+
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Complete your profile</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form (ngSubmit)="send()">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text" [(ngModel)]="info.name" name="name"></ion-input>
+      </ion-item>
+      <div class="padding" ></div>
+      <ion-item  (click)="open()" lines="none">
+        <ion-label>{{date}}</ion-label>
+      </ion-item>
+      <div class="padding"></div>
+      <ion-item lines="none">
+        <ion-label>Gender</ion-label>
+        <ion-select  [(ngModel)]="info.gender" name="gender">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="padding"></div>
+      <ion-item lines="none">
+        <ion-label>Interested in</ion-label>
+        <ion-select [(ngModel)]="info.interest" name="interest">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="padding"></div>
+      <ion-button type="submit" [disabled]="!validate()" shape="round" Expand="block" color="danger">Send</ion-button>
+    </form>
+    
+  </ion-card-content>
+</ion-card>
+</ion-content>

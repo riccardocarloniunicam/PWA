@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Gesture, GestureConfig, createGesture } from '@ionic/core';
-import { GestureController } from '@ionic/angular';
 @Component({
   selector: 'tinder-ui',
   templateUrl: 'tinder-ui.component.html',
