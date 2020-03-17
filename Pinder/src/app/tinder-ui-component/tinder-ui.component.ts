@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewChild, Output } from '@angular/core';
 import { Gesture, GestureConfig, createGesture } from '@ionic/core';
+import { EventEmitter } from 'protractor';
 @Component({
   selector: 'tinder-ui',
   templateUrl: 'tinder-ui.component.html',
@@ -8,14 +9,14 @@ import { Gesture, GestureConfig, createGesture } from '@ionic/core';
 export class TinderUIComponent {
   @Input('cards') cards: Array<{
     img: string,
-    title: string,
-    description: string
+    name: string,
+    bio: string
   }>;
   @ViewChildren('tinderCard', {read: ElementRef}) tinderCards: QueryList<ElementRef>;
   tinderCardsArray: Array<ElementRef>;
 
   constructor(private renderer: Renderer2){}
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     this.tinderCardsArray = this.tinderCards.toArray();
     this.tinderCards.changes.subscribe(()=>{
       this.tinderCardsArray = this.tinderCards.toArray();
@@ -46,12 +47,12 @@ export class TinderUIComponent {
           this.renderer.setStyle(element, 'transform', 'translateX( ' + windowWidth * 1.5 + 'px)');
           this.cards.shift();
           //style.transform = `translateX(${windowWidth * 1.5}px)`;
-          console.log(true);
+          console.log(element);
         } else if (ev.deltaX < -windowWidth/2){
           this.renderer.setStyle(element, 'transform','translateX(' + (-windowWidth * 1.5) + 'px)' );
           //style.transform = `translateX(-${windowWidth * 1.5}px)`;
           this.cards.shift();
-          console.log(false);
+          console.log(element);
         } else {
           this.renderer.setStyle(element, 'transform', '');
           

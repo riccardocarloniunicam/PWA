@@ -2,7 +2,15 @@ ion-content{
     --ion-background-color:  linear-gradient(135deg, rgba(188,78,156,1) 0%, rgba(248,7,89,1) 100%);
 }
 ion-card{
-    --ion-background-color: rgba(255, 255, 255, .8);
+    --ion-background-color: #fff;
+    //box-shadow: none;
+    margin: 0;
+    padding: 10% 0 20% 0;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
+ion-input{
+    //--placeholder-color: #fff;
 }
 .padding{
     padding: 5%;
@@ -26,4 +34,15 @@ ion-button{
 .error-messages span{
     display: inline-block;
     vertical-align: middle;
+}
+img {
+    width: 40%;
+    height: auto;
+    margin:  15% auto;
+}
+ion-button{
+    --background:  linear-gradient(135deg, rgba(188,78,156,1) 0%, rgba(248,7,89,1) 100%);
+}
+ion-item{
+    --ion-background-color: transparent;
 }

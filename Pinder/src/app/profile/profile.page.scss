@@ -1,11 +1,11 @@
 ion-content{
-    --ion-background-color:  linear-gradient(90deg, rgba(235,237,238,1) 0%, rgba(253,251,251,1) 50%, rgba(235,237,238,1) 100%);
+    --ion-background-color:  linear-gradient(135deg, rgba(188,78,156,1) 0%, rgba(248,7,89,1) 100%);
 }
 
 ion-card{
     margin: 0;
-    padding: 15% 5% 15% 5%;
-    --ion-background-color: rgba(255, 255, 255, .7);
+    padding: 15% 5% 20% 5%;
+    --ion-background-color: rgba(255, 255, 255, 1);
     border-bottom-left-radius: 32%;
     border-bottom-right-radius: 32%;
 }

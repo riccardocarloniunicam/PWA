@@ -2,6 +2,11 @@ import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef } from '@
 import { Gesture, GestureConfig, createGesture } from '@ionic/core';
 import { GestureController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { StorageService } from '../services/storage.service';
+import { UserService } from '../services/user.service';
+import { Constants } from '../config/constants';
+import { environment } from '../config/environment';
+import { Observable, observable } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -9,45 +14,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class HomePage implements OnInit {
-  
   cards;
-  constructor() {
+  constructor(
+    private storageService: StorageService,
+    private userService: UserService
+  ) {
     this.cards = [];
    }
+  ionViewWillEnter(){
+    this.storageService.get(Constants.TOKEN).then(token =>{
+      this.userService.getUsers(token).then((res: any) =>{
+        const users = JSON.parse(res.data);
+        users.forEach(user => {
+          let card = {
+            img: environment.apiUrl + user["Photos"][0].url,
+            name: user.name,
+            bio: user.bio
+          };
+          this.cards.push(card);
+        });
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    })
+  }
   ngOnInit() {
-
-    this.cards = [
-      {
-        img: "https://placeimg.com/300/300/people",
-        title: "Demo card 1",
-        id: 1,
-        description: "This is a demo for Tinder like swipe cards"
-      },
-      {
-        img: "https://placeimg.com/300/300/animals",
-        title: "Demo card 2",
-        id: 2,
-        description: "This is a demo for Tinder like swipe cards"
-      },
-      {
-        img: "https://placeimg.com/300/300/nature",
-        title: "Demo card 3",
-        id: 3,
-        description: "This is a demo for Tinder like swipe cards"
-      },
-      {
-        img: "https://placeimg.com/300/300/tech",
-        title: "Demo card 4",
-        id: 4,
-        description: "This is a demo for Tinder like swipe cards"
-      },
-      {
-        img: "https://placeimg.com/300/300/arch",
-        title: "Demo card 5",
-        id: 5,
-        description: "This is a demo for Tinder like swipe cards"
-      }
-    ]
+    this.cards = [];
   };
 }
 

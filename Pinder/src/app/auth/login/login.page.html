@@ -1,5 +1,4 @@
 <ion-content>
-  <div style="margin:40%;"></div>
 <ion-card>
   <ion-card-header text-center>
     <ion-card-title ></ion-card-title>
@@ -8,12 +7,12 @@
     <div class="padding"></div>
     <form [formGroup] ="loginForm">
     <ion-item class="rounded">
-      <ion-input formControlName="username" type="text" placeholder="username" name="username"></ion-input>
+      <ion-input formControlName="email" type="text" placeholder="email" name="email"></ion-input>
     </ion-item>
 
 <div class="error-messages">
-  <ng-container *ngFor="let error of error_messages.username">
-    <div class="error-messages" *ngIf="loginForm.get('username').hasError(error.type) && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+  <ng-container *ngFor="let error of error_messages.email">
+    <div class="error-messages" *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
       <ion-label color="danger"><ion-icon name="information-circle-outline"></ion-icon><span>{{error.message}}</span></ion-label>
     </div>
   </ng-container>
@@ -35,11 +34,11 @@
 
 
     <div class="padding"></div>
-     <ion-button (click)="login()" [disabled]="!loginForm.valid" shape="round" size="default" color="primary" expand="block">Login</ion-button>
+     <ion-button (click)="login()" [disabled]="!loginForm.valid" shape="round" size="default" class="button" expand="block">Login</ion-button>
     <span class="divider line one-line">or</span>
-      <ion-button [routerLink]="['/register']"shape="round" Expand="block" color="danger">Registrati</ion-button>
+      <ion-button [routerLink]="['/register']"shape="round" Expand="block" class="button">Registrati</ion-button>
     </form>
   </ion-card-content>
 </ion-card>
-
+<ion-item lines="none"><img src="../../../assets/img/icon.png" alt=""></ion-item>
 </ion-content>

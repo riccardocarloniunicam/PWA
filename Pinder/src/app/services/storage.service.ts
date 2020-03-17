@@ -16,7 +16,6 @@ export class StorageService {
   }
   async get(storageKey: string) {
     const ret = await Storage.get({ key: storageKey });
-    console.log(JSON.parse(unescape(atob(ret.value))));
     return JSON.parse(unescape(atob(ret.value)));
     }
     

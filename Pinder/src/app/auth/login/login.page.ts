@@ -21,9 +21,9 @@ loginForm: FormGroup;
 
 
 error_messages ={
-  "username":[
-    {type:'required',message:'Username is required'},
-    {type:'maxlength',message:'Username must be lower than 30 characters'}
+  "email":[
+    {type:'required',message:'Email is required'},
+    {type:'pattern',message:'Email must be valid'}
   ],
   "password":[
     {type:'required',message:'Password is required'},
@@ -46,14 +46,13 @@ error_messages ={
     this.loginForm = this.formBuilder.group({
       password: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.minLength(1),
+        Validators.minLength(7),
         Validators.maxLength(50),
       
       ])),
-      username: new FormControl('',Validators.compose([
+      email: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(30)
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ]))
     })
 
@@ -63,7 +62,7 @@ error_messages ={
   }
   login(){
     let postData = {
-      username: this.loginForm.value.username,
+      username: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
     this.loadingCtrl.create({}).then(
