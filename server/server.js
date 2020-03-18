@@ -27,8 +27,8 @@ app.use(express.static('public/'));
 // server.listen(PORT, () => {
 //   console.log(`App listening on PORT ${PORT}`);
 // });
-db.sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`App listening on PORT ${PORT}`);
-  });
-});
+//  db.sequelize.sync({ force: true }).then(() => {
+//   app.listen(PORT, () => {
+//     console.log(`App listening on PORT ${PORT}`);
+//   });
+//  });

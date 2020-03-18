@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Match } = require('../models');
+const Conversation   = require("./").Conversation;
 module.exports = (sequelize, DataTypes, Match) => {
     const Like = sequelize.define('Like', {
       data: {
@@ -36,7 +36,11 @@ module.exports = (sequelize, DataTypes, Match) => {
         });
         console.log(other);
         if(other){
-          
+          const { Conversation } = sequelize.models;
+          return await Conversation.create({
+            user1: liked,
+            user2: id
+          });
         }
         else{
           return like;
