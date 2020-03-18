@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     email: {
@@ -20,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
   User.authenticate = async function(email, password) {
 
     const user = await User.findOne({ where: { email } });
-    if (password === user.password) {
-      console.log(user);
+    
+    if (bcrypt.compareSync(password, user.password)) {
       return user.authorize();
     }
     throw new Error('invalid password');

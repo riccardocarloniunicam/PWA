@@ -1,4 +1,4 @@
-const { User, UserData, Photo } = require('../models');
+const { User, UserData, Photo, Like } = require('../models');
 const { validationResult } = require('express-validator');
 const resize = require('../services/resize');
 exports.user = async function(req, res){
@@ -57,8 +57,20 @@ exports.getUsers = async function(req, res){
         res.send( data );
     }
     catch(err){
-        console.log(err);
         res.status(400).send(err);
     }
   
+}
+exports.like = async function(req, res){
+    if(!req.user){
+        res.status(400).send('Invalid token');
+    }
+    try{
+        const like = await Like.iLike(req.user["dataValues"].UserDatumId, req.body.liked, req.body.like);
+        res.send(like);
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).send(err);
+    }
 }

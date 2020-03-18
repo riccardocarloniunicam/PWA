@@ -17,4 +17,6 @@ module.exports = function(app){
         .post(auth, upload.single('image'), user.photo);
     app.route('/getUsers')
         .get(auth, user.getUsers);
+    app.route('/like')
+        .post(auth, user.like);
 };

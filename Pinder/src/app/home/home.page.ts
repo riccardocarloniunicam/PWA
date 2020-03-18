@@ -29,7 +29,8 @@ export class HomePage implements OnInit {
           let card = {
             img: environment.apiUrl + user["Photos"][0].url,
             name: user.name,
-            bio: user.bio
+            bio: user.bio,
+            id: user.id
           };
           this.cards.push(card);
         });

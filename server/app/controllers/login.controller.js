@@ -1,5 +1,7 @@
 const {User, UserData, Photo } = require('../models');
 const { validationResult } = require('express-validator/check');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 exports.register = async function(req, res){
     if(req.email || req.password){
         return res.status(400).send(errors.array()[0]);
@@ -13,7 +15,7 @@ exports.register = async function(req, res){
         let user = await User.create(
             {
                 email: req.body.email,
-                password: req.body.password,
+                password: bcrypt.hashSync(req.body.password, saltRounds),
                 UserDatumId: userData["dataValues"].id
             }
         );

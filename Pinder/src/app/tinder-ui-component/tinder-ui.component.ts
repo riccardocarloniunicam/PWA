@@ -10,6 +10,7 @@ export class TinderUIComponent {
   @Input('cards') cards: Array<{
     img: string,
     name: string,
+    id: number,
     bio: string
   }>;
   @ViewChildren('tinderCard', {read: ElementRef}) tinderCards: QueryList<ElementRef>;
@@ -47,12 +48,12 @@ export class TinderUIComponent {
           this.renderer.setStyle(element, 'transform', 'translateX( ' + windowWidth * 1.5 + 'px)');
           this.cards.shift();
           //style.transform = `translateX(${windowWidth * 1.5}px)`;
-          console.log(element);
+          console.log(element.id);
         } else if (ev.deltaX < -windowWidth/2){
           this.renderer.setStyle(element, 'transform','translateX(' + (-windowWidth * 1.5) + 'px)' );
           //style.transform = `translateX(-${windowWidth * 1.5}px)`;
           this.cards.shift();
-          console.log(element);
+          console.log(element.id);
         } else {
           this.renderer.setStyle(element, 'transform', '');
           

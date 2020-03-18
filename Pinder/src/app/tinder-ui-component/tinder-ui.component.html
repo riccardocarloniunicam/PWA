@@ -1,6 +1,6 @@
 
 <div id="card-container" *ngFor="let card of cards; let i = index;"  [ngStyle]="{ zIndex: cards.length - i, transform: 'translateY(-' + 1 * i + 'px)' }">
-    <ion-card #{{card.id}} #tinderCard >
+    <ion-card id={{card.id}} #tinderCard >
         
         <ion-card-content>
             <img src={{card.img}}>
