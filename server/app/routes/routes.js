@@ -19,7 +19,7 @@ module.exports = function(app){
         .get(auth, user.getUsers);
     app.route('/like')
         .post(auth, user.like);
-    app.route('/messsage')
+    app.route('/message')
         .get(auth, user.getMessages)
         .post(auth, user.sendMessage);
 };
