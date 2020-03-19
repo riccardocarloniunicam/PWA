@@ -43,6 +43,17 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.cards = [];
   };
+  sendSwipe(event){
+    this.storageService.get(Constants.TOKEN)
+                        .then(token => {
+                          this.userService.like(token, event).then(res => {
+                            console.log(res);
+                          })
+                          .catch(err => {
+                            console.log(err);
+                          });
+                        })
+  }
 }
 
 

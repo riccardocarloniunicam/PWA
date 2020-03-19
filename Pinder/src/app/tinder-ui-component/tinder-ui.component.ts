@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewChild, Output } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, ViewChildren, QueryList, ElementRef, Renderer2, ViewChild, Output } from '@angular/core';
 import { Gesture, GestureConfig, createGesture } from '@ionic/core';
-import { EventEmitter } from 'protractor';
+
 @Component({
   selector: 'tinder-ui',
   templateUrl: 'tinder-ui.component.html',
@@ -13,6 +13,7 @@ export class TinderUIComponent {
     id: number,
     bio: string
   }>;
+  @Output() swipe = new EventEmitter();
   @ViewChildren('tinderCard', {read: ElementRef}) tinderCards: QueryList<ElementRef>;
   tinderCardsArray: Array<ElementRef>;
 
@@ -47,17 +48,23 @@ export class TinderUIComponent {
         if(ev.deltaX > windowWidth/2){
           this.renderer.setStyle(element, 'transform', 'translateX( ' + windowWidth * 1.5 + 'px)');
           this.cards.shift();
-          //style.transform = `translateX(${windowWidth * 1.5}px)`;
           console.log(element.id);
+          let data = {
+            "liked": element.id,
+            "like": "like"
+          };
+          this.swipe.emit(data);
         } else if (ev.deltaX < -windowWidth/2){
           this.renderer.setStyle(element, 'transform','translateX(' + (-windowWidth * 1.5) + 'px)' );
-          //style.transform = `translateX(-${windowWidth * 1.5}px)`;
           this.cards.shift();
-          console.log(element.id);
+          let data = {
+            "liked": element.id,
+            "like": "dislike"
+          };
+          this.swipe.emit(data);
         } else {
           this.renderer.setStyle(element, 'transform', '');
           
-          //style.transform = ''
         }
       }
     }

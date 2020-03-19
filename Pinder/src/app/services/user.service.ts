@@ -34,4 +34,8 @@ export class UserService {
   async getUsers(token){
     return await this.httpService.get('getUsers', {}, {"Authorization": token});
   }
+
+  async like(token, postData){
+    return await this.httpService.post('like', postData, {"Authorization": token});
+  }
 }

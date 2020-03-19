@@ -3,7 +3,7 @@ const Conversation   = require("./").Conversation;
 module.exports = (sequelize, DataTypes, Match) => {
     const Like = sequelize.define('Like', {
       data: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
       },
       like: {
         type: DataTypes.BOOLEAN,
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes, Match) => {
       const bool = status==='like' ? 1 : 0;
       const  like = await Like.create({
         like: bool,
+        data: new Date(),
         userLiked: liked,
         UserDatumId: id,
       });
@@ -34,7 +35,6 @@ module.exports = (sequelize, DataTypes, Match) => {
             ]
           }
         });
-        console.log(other);
         if(other){
           const { Conversation } = sequelize.models;
           return await Conversation.create({

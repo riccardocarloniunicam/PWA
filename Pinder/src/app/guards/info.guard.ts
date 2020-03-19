@@ -33,7 +33,7 @@ export class InfoGuard implements CanActivate {
                 }
               })
               .catch((err: any) => {
-                
+                console.log(err);
                 this.router.navigate(['login']);
                 resolve(false);
               });

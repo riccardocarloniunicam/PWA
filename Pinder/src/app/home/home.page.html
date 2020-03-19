@@ -1,5 +1,5 @@
 
 <ion-content> 
   <div style="margin:25%"></div>
-  <tinder-ui *ngIf="cards" [cards]="cards"></tinder-ui>
+  <tinder-ui *ngIf="cards" [cards]="cards" (swipe)="sendSwipe($event)"></tinder-ui>
 </ion-content>
